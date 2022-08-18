@@ -1,16 +1,23 @@
-Apache Maven Sources
-Manifest to fetch every Apache Maven git repositories using Google repo: default.xml file configures the directory structure where the different Git repositories will be put.
+# Apache Maven Sources.
+
+Manifest to fetch every [Apache Maven](https://maven.apache.org) git repositories using [Google repo](https://source.android.com/source/using-repo): [`default.xml` file](default.xml) configures the
+directory structure where the different Git repositories will be put.
 
 In addition, an aggregator build structure is provided to build everything as one aggregated build.
 
-Bootstrapping Basics
+## Bootstrapping Basics
+
+```
 mkdir maven
 cd maven
 repo init -u https://gitbox.apache.org/repos/asf/maven-sources.git
 repo sync
 repo start master --all
+```
+
 Resulting directory tree looks like:
 
+```
 |-- core
 |   |-- build-cache
 |   |-- its
@@ -151,15 +158,22 @@ Resulting directory tree looks like:
     |-- repository-tools
     |-- resources
     `-- sandbox
-Then simply use the content in this tree with normal git commands.
+```
 
-Building Everything
+Then simply use the content in this tree with normal `git` commands.
+
+## Building Everything
+
 Once content is cloned with previous instructions, you can build each local clone as a separate project.
 
 You can also build absolutely everything in one aggregated run (WARNING: more than 400 modules...):
 
+```
 cd sources/aggregator
 mvn --fail-at-end -Prun-its verify
 mvn --fail-at-end -Preporting site
-Sources Overview
-See Maven Sources Overview description.
+```
+
+## Sources Overview
+
+See [Maven Sources Overview](https://maven.apache.org/scm.html) description.
